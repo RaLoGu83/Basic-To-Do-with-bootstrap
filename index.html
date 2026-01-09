@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD To-Do</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</head>
+<body class="container mt-5">
+    <h1>To-Do List:</h1>
+    <button type="button" class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#taskModal">Add New Task</button>
+    <br><br>
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>ID</th>
+                <th>Task Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody class="table-ligth">
+
+        </tbody>
+    </table>
+
+    <!-- Modal copiado de https://getbootstrap.com/docs/5.0/components/modal/ -->
+<div class="modal" id="taskModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add your task here</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <input type="text" class="form-control" id="taskInput" placeholder="Task description">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Dismiss</button>
+        <button type="button" class="btn btn-primary">Add task</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

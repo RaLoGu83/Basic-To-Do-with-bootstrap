@@ -43,10 +43,12 @@ class TaskManager{
     }
 
     saveCookies(){ // Guardar las tareas en las cookies
+        const expires = new Date(); // Se le mete un expires para que al cerrar el navegador no se borren las cookies
+        expires.setTime(expires.getTime() + (7 * 24 * 60 * 60 * 1000)); // Expira en 7 días
         const cookie = document.cookie 
             .split('; ') // Separar las cookies
-            document.cookie = "tasks=" + JSON.stringify(this.tasks) + "; path=/"; // JSON.stringify convierte un objeto JavaScript en una cadena JSON
-    }
+            document.cookie = "tasks=" + encodeURIComponent(JSON.stringify(this.tasks)) + "; expires=" + expires.toUTCString() + "; path=/"; // JSON.stringify convierte un objeto JavaScript en una cadena JSON
+    } 
 
     loadCookies(){ // Cargar las tareas desde las cookies
         const cookies = document.cookie
@@ -54,7 +56,7 @@ class TaskManager{
         .find(row => row.startsWith('tasks='));
 
         return cookies
-        ? JSON.parse(cookies.split('=')[1]).map(taskData => new Task(taskData.id, taskData.description)) // JSON.parse convierte una cadena JSON en un objeto JavaScript 
+        ? JSON.parse(decodeURIComponent(cookies.split('=')[1])).map(taskData => new Task(taskData.id, taskData.description)) // JSON.parse convierte una cadena JSON en un objeto JavaScript 
         : [];
     }
 }

@@ -1,5 +1,4 @@
-When I wrote this code, only God and I knew what I was doing
-After adding the file "main.js", I somehow made the list and cookies work 
-During the testing phase, I just realized the cookies somehow crash and the list only works after deleting them
-Today, only God and probably my teacher know what I did and what's wrong with this code.
-LMAO
+When I wrote this code, only God and I knew what I was doing.
+After adding the file "main.js", I somehow made the list and cookies work.
+During the testing phase, I just realized the cookies somehow crash and the list only works after deleting them.
+Today, only God and probably my teacher know what I did and what's wrong with this code. SMH

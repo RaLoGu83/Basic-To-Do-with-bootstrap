@@ -48,7 +48,7 @@ class TaskManager{
         const cookie = document.cookie 
             .split('; ') // Separar las cookies
             document.cookie = "tasks=" + encodeURIComponent(JSON.stringify(this.tasks)) + "; expires=" + expires.toUTCString() + "; path=/"; // JSON.stringify convierte un objeto JavaScript en una cadena JSON
-    } 
+    } // EncodeURIComponent codifica una cadena para que el navegador la interprete
 
     loadCookies(){ // Cargar las tareas desde las cookies
         const cookies = document.cookie
@@ -58,7 +58,7 @@ class TaskManager{
         return cookies
         ? JSON.parse(decodeURIComponent(cookies.split('=')[1])).map(taskData => new Task(taskData.id, taskData.description)) // JSON.parse convierte una cadena JSON en un objeto JavaScript 
         : [];
-    }
+    } // El decodeURIComponent decodifica la cadena para cargarla como JSON
 }
 
 // Segundo: se declaran las variables

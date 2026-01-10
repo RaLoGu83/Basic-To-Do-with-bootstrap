@@ -7,12 +7,12 @@ class Task{
 
     // Métodos getter y setter para la descripción
     getDescription(){
-        console.log("Cogiendo la descripción de la tarea: " + this.description);
+        console.log("Cogiendo la descripción de la tarea: " + this.description); // Console log para debug
         return this.description;
     }
 
     setDescription(newDescription){
-        console.log("Cambiando la descripción de la tarea: " + newDescription);
+        console.log("Cambiando la descripción de la tarea: " + newDescription); // Console log para debug
         this.description = newDescription;
     }
 }
@@ -23,7 +23,7 @@ class TaskManager{
     }
 
     addTask(description){
-        const id = this.tasks.length > 0 ? this.tasks[this.tasks.length - 1].id + 1 : 1; // Generar un ID único
+        const id = this.tasks.length > 0 ? this.tasks[this.tasks.length - 1].id + 1 : 1; // Generar un ID a partir de operador ternario. Obtiene el último elemento, coge su ID y le suma 1, si no hay le pone 1 directamente
         const newTask = new Task(id, description);
         this.tasks.push(newTask); // Añadir la nueva tarea a la lista
         this.saveCookies(); // Guardar las tareas en las cookies
@@ -45,7 +45,7 @@ class TaskManager{
     saveCookies(){ // Guardar las tareas en las cookies
         const cookie = document.cookie 
             .split('; ') // Separar las cookies
-            document.cookie = "tasks=" + JSON.stringify(this.tasks) + "; path=/";
+            document.cookie = "tasks=" + JSON.stringify(this.tasks) + "; path=/"; // JSON.stringify convierte un objeto JavaScript en una cadena JSON
     }
 
     loadCookies(){ // Cargar las tareas desde las cookies
@@ -54,7 +54,7 @@ class TaskManager{
         .find(row => row.startsWith('tasks='));
 
         return cookies
-        ? JSON.parse(cookies.split('=')[1]).map(taskData => new Task(taskData.id, taskData.description))
+        ? JSON.parse(cookies.split('=')[1]).map(taskData => new Task(taskData.id, taskData.description)) // JSON.parse convierte una cadena JSON en un objeto JavaScript 
         : [];
     }
 }
@@ -86,7 +86,7 @@ function renderTasks(){
             </td>
         `;
 
-        tableBody.appendChild(row);
+        tableBody.appendChild(row); // Crea nodos (de fila) y los añade a la estructura DOM https://developer.mozilla.org/es/docs/Web/API/Node/appendChild
     });
 }
 renderTasks(); // Llamar a la función para renderizar las tareas inicialmente
@@ -121,7 +121,7 @@ tableBody.addEventListener("click", (e) => {
 // Evento para el botón "Add Task"
 
 document.querySelector("#taskModal .btn-primary").addEventListener("click", () => {
-    const description = taskInput.value.trim();
+    const description = taskInput.value.trim(); // Coge el input y le hace trim
 
     if(description === ""){
         alert("You must enter a description to a task.");
